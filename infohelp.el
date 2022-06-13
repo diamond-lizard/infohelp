@@ -115,7 +115,7 @@
       (setq infohelp-old-keys (cons (cons 'prevs prevs) infohelp-old-keys)))))
 
 (defun infohelp-reset-old-keys()
-  ;;(assert infohelp-old-keys)
+  ;;(cl-assert infohelp-old-keys)
   (let ((nexts (cdr (assoc 'nexts infohelp-old-keys)))
         (prevs (cdr (assoc 'prevs infohelp-old-keys))))
     (setq infohelp-old-keys nil)
@@ -304,12 +304,12 @@
 
 
 (defun infohelp-setup()
-  (assert (eq major-mode 'Info-mode))
+  (cl-assert (eq major-mode 'Info-mode))
   (make-local-variable 'after-change-functions)
   (add-hook 'after-change-functions 'infohelp-add-links-when-idle)
   (infohelp-add-links-to-buffer-when-idle))
 (defun infohelp-teardown()
-  (assert (eq major-mode 'Info-mode))
+  (cl-assert (eq major-mode 'Info-mode))
   (make-local-variable 'after-change-functions)
   (remove-hook 'after-change-functions 'infohelp-add-links-when-idle)
   (infohelp-remove-links-from-buffer))
